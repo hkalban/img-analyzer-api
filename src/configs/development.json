@@ -1,0 +1,23 @@
+{
+    "env": "development",
+    "dbConfig": {
+        "host": "pg",
+        "user": "root",
+        "password": "password",
+        "database": "typeorm"
+    },
+    "googleCloud": {
+        "keyFilename": "./local-gcp-keyfile.json",
+        "bucket": "test_img_analyzer",
+        "projectId": "img-analyzer"
+    },
+    "secretKey": "secretKey",
+    "log": {
+        "format": "dev",
+        "dir": "../logs"
+    },
+    "cors": {
+        "origin": true,
+        "credentials": true
+    }
+}
