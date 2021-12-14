@@ -25,14 +25,14 @@ class ImageService {
         .leftJoin('images.objects', 'object')
         .leftJoinAndSelect('images.objects', 'objectsSelect')
         .where('object.name ILIKE ANY (array[:...searchTerms])', { searchTerms })
-        .orderBy("images.createdAt", "DESC")
+        .orderBy('images.createdAt', 'DESC')
         .getMany();
     } else {
       images = await imageRepository.find({
         relations: ['objects'],
         order: {
-          createdAt: "DESC",
-        }
+          createdAt: 'DESC',
+        },
       });
     }
 
@@ -50,7 +50,7 @@ class ImageService {
   }
 
   public async createImage(imageData: CreateImageDto): Promise<Image> {
-    if (isEmpty(imageData)) throw new HttpException(400, "Invalid input");
+    if (isEmpty(imageData)) throw new HttpException(400, 'Invalid input');
 
     try {
       // Detect objects and save metadata

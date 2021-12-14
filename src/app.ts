@@ -92,7 +92,7 @@ class App {
 
   private initializeSecretEnvVars() {
     const { keyFilename }: gcpConfig = config.get('googleCloud');
-    if(!keyFilename) throw new Error('Google Cloud Key File not configured')
+    if (!keyFilename) throw new Error('Google Cloud Key File not configured');
 
     process.env.GOOGLE_APPLICATION_CREDENTIALS = keyFilename;
   }

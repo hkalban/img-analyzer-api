@@ -40,7 +40,7 @@ class ImagesController {
       let path: string;
 
       try {
-        path = getImagePath(req)
+        path = getImagePath(req);
       } catch (error) {
         res.status(400).json({ message: error.message });
         return;
@@ -49,7 +49,7 @@ class ImagesController {
       const imageData: CreateImageDto = {
         label: getLabel(req.body.label),
         path,
-        analyze: shouldAnalyze(req.body.analyze)
+        analyze: shouldAnalyze(req.body.analyze),
       };
 
       const createImageData: Image = await this.imageService.createImage(imageData);
@@ -65,21 +65,21 @@ function getImagePath(req: Request): string {
   // If file upload
   if (req.file) {
     return req.file.path;
-  } 
-  
+  }
+
   // If Url provided
-  if(req.body.url) {
-    let url = req.body.url;
+  if (req.body.url) {
+    const url = req.body.url;
 
     //validate URL
-    if(url.match(/\.(jpeg|jpg|gif|png)$/) == null){
+    if (url.match(/\.(jpeg|jpg|gif|png)$/) == null) {
       throw new Error(`Invalid Image URL ${url}`);
     }
 
     return url;
   }
 
-  // If no upload or url provided 
+  // If no upload or url provided
   throw new Error('Please upload an Image or provide Image URL!');
 }
 

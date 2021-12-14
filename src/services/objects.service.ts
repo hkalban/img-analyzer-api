@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import { getRepository } from 'typeorm';
 import { CreateImageDto } from '@/dtos/images.dto';
 import { ObjectEntity } from '@entity/objects.entity';
@@ -24,10 +23,10 @@ class ObjectService {
     try {
       const objectRepository = getRepository(this.objects);
 
-      let results: ObjectEntity[] = [];
+      const results: ObjectEntity[] = [];
 
-      for (let name of detectedObjects){
-        const object = await objectRepository.save({name});
+      for (const name of detectedObjects) {
+        const object = await objectRepository.save({ name });
         results.push(object);
       }
 

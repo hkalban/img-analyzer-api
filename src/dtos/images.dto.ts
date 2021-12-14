@@ -29,7 +29,7 @@ export class ImageMapper {
       objects: !image.objects ? [] : image.objects.map(obj => obj.name),
     } as ImageRO;
   };
-  
+
   public static toROs = (images: Image[]): ImageRO[] => {
     return images.map(image => {
       return this.toRO(image);

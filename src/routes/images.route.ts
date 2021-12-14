@@ -15,21 +15,15 @@ class ImagesRoute implements Routes {
   }
 
   private async initializeRoutes() {
-    this.router.get(
-      `${this.path}`,
-      this.imagesController.getImages
-    );
+    this.router.get(`${this.path}`, this.imagesController.getImages);
 
-    this.router.get(
-      `${this.path}/:id(\\d+)`,
-      this.imagesController.getImageById
-    );
+    this.router.get(`${this.path}/:id(\\d+)`, this.imagesController.getImageById);
 
     this.router.post(
       `${this.path}`,
       uploadFileMiddleware.single('file'),
       validationMiddleware(CreateImageDto, 'body'),
-      this.imagesController.createImage
+      this.imagesController.createImage,
     );
   }
 }

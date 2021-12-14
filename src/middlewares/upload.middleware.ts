@@ -33,13 +33,12 @@ const uploadFileMiddleware = multer({
   storage: storage,
   limits: { fileSize: uploadMaxSize },
   fileFilter: function (req, file, callback) {
-    var ext = path.extname(file.originalname);
-    if(ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
-        return callback(new Error('Only images are allowed'))
+    const ext = path.extname(file.originalname);
+    if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
+      return callback(new Error('Only images are allowed'));
     }
-    callback(null, true)
+    callback(null, true);
   },
 });
-
 
 export default uploadFileMiddleware;
